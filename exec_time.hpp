@@ -22,8 +22,6 @@
 #include <chrono>
 #include <ratio>
 
-std::ios_base::sync_with_stdio(false);
-
 #define exec_time_ns \
     stdx::chrono::_details::exec_time_impl<int, std::nano>(__FUNCTION__, __LINE__, " ns")
 #define exec_time_us \
@@ -42,6 +40,7 @@ std::ios_base::sync_with_stdio(false);
 namespace stdx {
     namespace chrono {
         namespace _details {
+            std::ios_base::sync_with_stdio(false);
             template<typename T = int, typename R = std::nano>
             class exec_time_impl
             {
