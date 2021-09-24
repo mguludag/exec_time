@@ -37,6 +37,8 @@
 
 #define exec_time_elapsed(exec_time_obj) exec_time_obj.elapsed_(__LINE__)
 
+std::ios_base::sync_with_stdio(false);
+
 namespace stdx {
     namespace chrono {
         namespace _details {
@@ -50,7 +52,6 @@ namespace stdx {
                 
                 explicit exec_time_impl(const char *funcname = "", int line = 0, const char *unit = "")
                 {
-                    std::ios_base::sync_with_stdio(false);
                     m_funcname_ = std::string(funcname);
                     m_unit_ = std::string(unit);
                     m_begin_ = line;
@@ -62,7 +63,7 @@ namespace stdx {
                     m_funcname_ = move.m_funcname_;
                     m_unit_ = move.m_unit_;
                     m_begin_ = move.m_begin_;
-                    m_start_ = move.m_start;                 
+                    m_start_ = move.m_start_;                 
                 }
                 
                 exec_time_impl& operator=(exec_time_impl&& move)
@@ -70,7 +71,7 @@ namespace stdx {
                     m_funcname_ = move.m_funcname_;
                     m_unit_ = move.m_unit_;
                     m_begin_ = move.m_begin_;
-                    m_start_ = move.m_start;
+                    m_start_ = move.m_start_;
                     return *this;                   
                 }
 
