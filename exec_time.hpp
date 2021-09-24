@@ -37,10 +37,11 @@
 
 #define exec_time_elapsed(exec_time_obj) exec_time_obj.elapsed_(__LINE__)
 
+std::ios_base::sync_with_stdio(false);
+
 namespace stdx {
     namespace chrono {
         namespace _details {
-            std::ios_base::sync_with_stdio(false);
             template<typename T = int, typename R = std::nano>
             class exec_time_impl
             {
