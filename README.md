@@ -14,3 +14,12 @@ int main()
   return 0;
 } // main from line 11 to end executed in 90.036 ms
 ```
+### Macros for construct exec_time_impl object
+```C++
+  exec_time_ns;
+  exec_time_us;
+  exec_time_ms;
+  exec_time_s;
+  exec_time_m;
+  exec_time_h;
+```
