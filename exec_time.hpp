@@ -45,6 +45,9 @@ namespace stdx {
             {
             public:
                 exec_time_impl() = delete;
+                exec_time_impl(const exec_time_impl&) = delete;
+                exec_time_impl& operator=(const exec_time_impl&) = delete;
+                
                 explicit exec_time_impl(const char *funcname = "", int line = 0, const char *unit = "")
                 {
                     std::ios_base::sync_with_stdio(false);
@@ -52,6 +55,23 @@ namespace stdx {
                     m_unit_ = std::string(unit);
                     m_begin_ = line;
                     m_start_ = std::chrono::high_resolution_clock::now();
+                }
+                
+                exec_time_impl(exec_time_impl&& move)
+                {
+                    m_funcname_ = move.m_funcname_;
+                    m_unit_ = move.m_unit_;
+                    m_begin_ = move.m_begin_;
+                    m_start_ = move.m_start;                 
+                }
+                
+                exec_time_impl& operator=(exec_time_impl&& move)
+                {
+                    m_funcname_ = move.m_funcname_;
+                    m_unit_ = move.m_unit_;
+                    m_begin_ = move.m_begin_;
+                    m_start_ = move.m_start;
+                    return *this;                   
                 }
 
                 ~exec_time_impl()
