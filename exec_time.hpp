@@ -22,6 +22,8 @@
 #include <chrono>
 #include <ratio>
 
+std::ios_base::sync_with_stdio(false);
+
 #define exec_time_ns \
     stdx::chrono::_details::exec_time_impl<int, std::nano>(__FUNCTION__, __LINE__, " ns")
 #define exec_time_us \
@@ -50,7 +52,6 @@ namespace stdx {
                 
                 explicit exec_time_impl(const char *funcname = "", int line = 0, const char *unit = "")
                 {
-                    std::ios_base::sync_with_stdio(false);
                     m_funcname_ = std::string(funcname);
                     m_unit_ = std::string(unit);
                     m_begin_ = line;
