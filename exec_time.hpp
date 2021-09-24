@@ -48,10 +48,10 @@ namespace stdx {
                 explicit exec_time_impl(const char *funcname = "", int line = 0, const char *unit = "")
                 {
                     std::ios_base::sync_with_stdio(false);
-                    m_start_ = std::chrono::high_resolution_clock::now();
                     m_funcname_ = std::string(funcname);
                     m_unit_ = std::string(unit);
                     m_begin_ = line;
+                    m_start_ = std::chrono::high_resolution_clock::now();
                 }
 
                 ~exec_time_impl()
